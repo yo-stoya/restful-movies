@@ -2,7 +2,7 @@ FROM amazoncorretto:17.0.7-alpine
 
 WORKDIR /app
 
-COPY *.jar /app/app.jar
+COPY build/libs/restful-movies.jar app.jar
 
 EXPOSE 8080
 
