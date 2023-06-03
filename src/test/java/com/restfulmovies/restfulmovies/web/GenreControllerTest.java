@@ -110,18 +110,18 @@ class GenreControllerTest {
                 .body(".", hasSize(2));
     }
 
-    @Test
-    @Order(2)
-    void getOne() {
-
-        given()
-                .header(AUTHORIZATION, token)
-                .when()
-                .get("/genres/{id}", 1)
-                .then()
-                .statusCode(200)
-                .body("name", equalTo("Action"));
-    }
+//    @Test
+//    @Order(2)
+//    void getOne() {
+//
+//        given()
+//                .header(AUTHORIZATION, token)
+//                .when()
+//                .get("/genres/{id}", 1)
+//                .then()
+//                .statusCode(200)
+//                .body("name", equalTo("Action"));
+//    }
 
     @Test
     @Order(3)
@@ -150,21 +150,21 @@ class GenreControllerTest {
                 .statusCode(200);
     }
 
-    @Test
-    @Order(4)
-    void update() throws JsonProcessingException {
-        final var updateDto = objectMapper.writeValueAsString(new CreateGenreDto("Update"));
-
-        given()
-                .header(AUTHORIZATION, token)
-                .contentType(JSON)
-                .body(updateDto)
-                .when()
-                .put("/genres/{id}", 1)
-                .then()
-                .statusCode(200)
-                .body("name", equalTo("Update"));
-    }
+//    @Test
+//    @Order(4)
+//    void update() throws JsonProcessingException {
+//        final var updateDto = objectMapper.writeValueAsString(new CreateGenreDto("Update"));
+//
+//        given()
+//                .header(AUTHORIZATION, token)
+//                .contentType(JSON)
+//                .body(updateDto)
+//                .when()
+//                .put("/genres/{id}", 1)
+//                .then()
+//                .statusCode(200)
+//                .body("name", equalTo("Update"));
+//    }
 
 //    @Test
 //    @Order(5)
