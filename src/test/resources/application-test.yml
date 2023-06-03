@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:tc:mysql:8.0.33:///test_db
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+  test:
+    database:
+      replace: none
+  sql:
+    init:
+      mode: never
+
+app:
+  security:
+    jwt:
+      expiration: 1800000 # 1m

@@ -1,0 +1,39 @@
+insert into countries (`name`, `continent`, `currency`)
+values ('Albania', 'Europe', 'ALL'),
+       ('Argentina', 'South America', 'ARS'),
+       ('Armenia', 'Asia', 'AMD');
+
+insert into genres (name)
+values ('Action'),
+       ('Adventure'),
+       ('Animation');
+
+insert into actors (first_name, last_name, birthdate, height, awards, country_id)
+values ('Jill', 'Roistone', '1990-04-08', 173, 2, 36),
+       ('Claus', 'Jewis', '1999-10-08', 174, 0, 8),
+       ('Gilligan', 'Elrick', '1984-08-05', 175, 25, 16);
+
+insert into movies_info (id, rating, runtime, thumbnail, budget, release_date, has_subtitles, description)
+values (1, 9.70, 146, 'http://image.com/256x100.png/dddddd/000000', 86217.48, '2018-02-04', 1,
+        'Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus.'),
+       (2, 2.20, 77, 'http://image.com/672x100.png/5fa2dd/ffffff', 86783.27, '2013-04-04', 0,
+        'Cras pellentesque volutpat dui.'),
+       (3, 9.40, 107, 'http://image.com/763x100.png/dddddd/000000', 155927.83, '2012-01-17', 1,
+        'In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at,
+lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat.');
+
+insert into movies (title, country_id, movie_info_id)
+values ('Lumiere and Company (LumiГЁre et compagnie)', 21, 1),
+       ('Ask the Dust', 3, 2),
+       ('Vikings, The', 2, 3);
+
+insert into movies_actors (movie_id, actor_id)
+values (216, 15),
+       (185, 28),
+       (187, 56);
+
+insert into movies_genres (genre_id, movie_id)
+values (6, 295),
+       (21, 219);
+
+
