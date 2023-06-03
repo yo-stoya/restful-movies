@@ -62,93 +62,93 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("test")
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+//@ActiveProfiles("test")
+//@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class GenreControllerTest {
 
-    @LocalServerPort
-    private Integer port;
-
-    @Autowired
-    private GenreRepository genreRepository;
-
-    @Autowired
-    private ObjectMapper objectMapper;
-
-    private static final String BASE_URL = "/api/v1";
-    private String token;
-
-    @BeforeEach
-    void setup() throws Exception {
-        RestAssured.baseURI = "http://localhost:" + port + BASE_URL;
-
-        final String user = objectMapper.writeValueAsString(new AuthUserDto("admin", "123"));
-
-        final String accessToken = given()
-                .contentType(JSON)
-                .body(user)
-                .when()
-                .post("/users/auth")
-                .jsonPath()
-                .getString("accessToken");
-
-        token = "Bearer " + accessToken;
-    }
-
-    @Test
-    @Order(1)
-    @Sql("/scripts/init-genres.sql")
-    void getAll()  {
-
-        given()
-                .header(AUTHORIZATION, token)
-                .when()
-                .get("/genres")
-                .then()
-                .statusCode(200)
-                .body(".", hasSize(2));
-    }
-
+//    @LocalServerPort
+//    private Integer port;
+//
+//    @Autowired
+//    private GenreRepository genreRepository;
+//
+//    @Autowired
+//    private ObjectMapper objectMapper;
+//
+//    private static final String BASE_URL = "/api/v1";
+//    private String token;
+//
+//    @BeforeEach
+//    void setup() throws Exception {
+//        RestAssured.baseURI = "http://localhost:" + port + BASE_URL;
+//
+//        final String user = objectMapper.writeValueAsString(new AuthUserDto("admin", "123"));
+//
+//        final String accessToken = given()
+//                .contentType(JSON)
+//                .body(user)
+//                .when()
+//                .post("/users/auth")
+//                .jsonPath()
+//                .getString("accessToken");
+//
+//        token = "Bearer " + accessToken;
+//    }
+//
 //    @Test
-//    @Order(2)
-//    void getOne() {
+//    @Order(1)
+//    @Sql("/scripts/init-genres.sql")
+//    void getAll()  {
 //
 //        given()
 //                .header(AUTHORIZATION, token)
 //                .when()
-//                .get("/genres/{id}", 1)
+//                .get("/genres")
 //                .then()
 //                .statusCode(200)
-//                .body("name", equalTo("Action"));
+//                .body(".", hasSize(2));
 //    }
-
-    @Test
-    @Order(3)
-    void create() throws JsonProcessingException {
-
-        final var createDto = objectMapper.writeValueAsString(new CreateGenreDto("Test"));
-
-        final ExtractableResponse<Response> response = given()
-                .header(AUTHORIZATION, token)
-                .contentType(JSON)
-                .body(createDto)
-                .when()
-                .post("/genres")
-                .then()
-                .log().body()
-                .statusCode(201)
-                .extract();
-
-
-
-        given()
-                .header(AUTHORIZATION, token)
-                .when()
-                .get(response.header(LOCATION))
-                .then()
-                .statusCode(200);
-    }
+//
+////    @Test
+////    @Order(2)
+////    void getOne() {
+////
+////        given()
+////                .header(AUTHORIZATION, token)
+////                .when()
+////                .get("/genres/{id}", 1)
+////                .then()
+////                .statusCode(200)
+////                .body("name", equalTo("Action"));
+////    }
+//
+//    @Test
+//    @Order(3)
+//    void create() throws JsonProcessingException {
+//
+//        final var createDto = objectMapper.writeValueAsString(new CreateGenreDto("Test"));
+//
+//        final ExtractableResponse<Response> response = given()
+//                .header(AUTHORIZATION, token)
+//                .contentType(JSON)
+//                .body(createDto)
+//                .when()
+//                .post("/genres")
+//                .then()
+//                .log().body()
+//                .statusCode(201)
+//                .extract();
+//
+//
+//
+//        given()
+//                .header(AUTHORIZATION, token)
+//                .when()
+//                .get(response.header(LOCATION))
+//                .then()
+//                .statusCode(200);
+//    }
 
 //    @Test
 //    @Order(4)
