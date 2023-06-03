@@ -3,7 +3,7 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
     password: ${MYSQL_PASSWORD:123}
     username: ${MYSQL_USER:root}
-    url: jdbc:mysql://db:3306/restful_movies?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://${DB_HOST:localhost}:3306/restful_movies?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
   jpa:
     #        hibernate:
     #          ddl-auto: create-drop
